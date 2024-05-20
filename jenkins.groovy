@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'maven-jenkins'
+        jdk 'jdk-jenkins'
     }
     stages {
         stage("test") {
