@@ -3,11 +3,12 @@ def branch_cutted = task_branch.contains("origin") ? task_branch.split('/')[1] :
 currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://gitlab.com/viktordiktor/seleniumSwagLabs.git"
 
+tools {
+    maven 'MAVEN_HOME'
+    jdk 'JAVA_HOME'
+}
+
 node {
-    tools {
-        maven 'MAVEN_HOME'
-        jdk 'JAVA_HOME'
-    }
     withEnv(["branch=${branch_cutted}", "base_url=${base_git_url}"]) {
         stage("Checkout Branch") {
             if (!"$branch_cutted".contains("master")) {
