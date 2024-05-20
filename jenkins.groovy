@@ -4,7 +4,6 @@ currentBuild.displayName = "$branch_cutted"
 base_git_url = "https://gitlab.com/viktordiktor/seleniumSwagLabs.git"
 
 node {
-    agent any
     tools {
         maven 'MAVEN_HOME'
         jdk 'JAVA_HOME'
