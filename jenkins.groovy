@@ -8,7 +8,7 @@ pipeline {
             steps {
                 git url: 'https://github.com/viktordiktor/seleniumSwagLabs'
                 withMaven {
-                    sh "unset JAVA_HOME && mvn clean test"
+                    sh "mvn clean test"
                 }
                 script {
                     generateAllure()
