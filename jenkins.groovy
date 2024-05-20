@@ -10,10 +10,6 @@ pipeline {
                 withMaven {
                     sh "unset JAVA_HOME && mvn clean test"
                 }
-            }
-        }
-        stage("Allure Report") {
-            steps {
                 script {
                     generateAllure()
                 }
