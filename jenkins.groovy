@@ -9,8 +9,12 @@ pipeline {
                 }
             }
         }
-        stage("allure") {
-            generateAllure()
+        stage("Allure Report") {
+            steps {
+                script {
+                    generateAllure()
+                }
+            }
         }
     }
 }
