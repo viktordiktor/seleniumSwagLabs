@@ -20,7 +20,7 @@ node {
         }
 
         try {
-            parallel getTestStages(["apiTests", "uiTests"])
+            parallel getTestStages(["uiTests"])
         } finally {
             stage ("Allure") {
                 generateAllure()
@@ -43,7 +43,7 @@ def getTestStages(testTags) {
 
 def runTestWithTag(String tag) {
     try {
-        labelledShell(label: "Run ${tag}", script: "clean test ${tag}")
+        labelledShell(label: "Run ${tag}", script: "mvn clean test")
     } finally {
         echo "some failed tests"
     }
