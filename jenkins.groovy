@@ -9,7 +9,7 @@ pipeline {
             steps {
                 git url: 'https://github.com/viktordiktor/seleniumSwagLabs'
                 withMaven {
-                    sh "mvn clean test"
+                    sh "unset JAVA_HOME && mvn clean test"
                 }
             }
         }
