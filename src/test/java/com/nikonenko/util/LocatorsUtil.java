@@ -14,7 +14,6 @@ public class LocatorsUtil {
     public static String ITEM_PRICES_XPATH = "//div[@class='inventory_item_price']";
     public static String ABOUT_XPATH = "//a[@id='about_sidebar_link' and @class='bm-item menu-item']";
     public static String ALL_ITEMS_XPATH = "//a[@id='inventory_sidebar_link' and @class='bm-item menu-item']";
-    public static String LOGOUT_XPATH = "//a[@id='logout_sidebar_link' and @class='bm-item menu-item']";
     public static String LOGOUT_CSS = "a#logout_sidebar_link.bm-item.menu-item";
     public static String TWITTER_XPATH = "//li[@class='social_twitter']//a";
     public static String FACEBOOK_XPATH = "//li[@class='social_facebook']//a";
