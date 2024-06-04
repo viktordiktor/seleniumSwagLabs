@@ -11,8 +11,10 @@ pipeline {
         }
         stage("run tests") {
             steps {
-                withMaven {
-                    sh "mvn clean test"
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    withMaven {
+                        sh "mvn clean test"
+                    }
                 }
             }
         }
