@@ -4,12 +4,20 @@ pipeline {
         maven 'maven-jenkins'
     }
     stages {
-        stage("test") {
+        stage("clone repo") {
             steps {
                 git url: 'https://github.com/viktordiktor/seleniumSwagLabs'
+            }
+        }
+        stage("run tests") {
+            steps {
                 withMaven {
                     sh "mvn clean test"
                 }
+            }
+        }
+        stage("allure reports") {
+            steps {
                 script {
                     generateAllure()
                 }

@@ -38,7 +38,7 @@ public class NavigationPage {
 
     public LoginPage clickOnLogoutButton(WebDriverWait wait) {
         clickOnNavigateButton();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(LocatorsUtil.LOGOUT_XPATH))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(LocatorsUtil.LOGOUT_CSS))).click();
         return new LoginPage(driver);
     }
 
