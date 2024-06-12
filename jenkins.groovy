@@ -3,14 +3,7 @@ pipeline {
     tools {
         maven 'maven-jenkins'
     }
-    triggers {
-        github {
-            repoOwner 'viktordiktor'
-            repoName 'seleniumSwagLabs'
-            branch 'master'
-            events ['PULL_REQUEST_OPENED', 'PULL_REQUEST_UPDATED']
-        }
-    }
+    triggers { pollSCM('* * * * *') }
     stages {
         stage("clone repo") {
             steps {
