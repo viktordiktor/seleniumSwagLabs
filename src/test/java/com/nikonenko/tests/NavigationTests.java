@@ -7,6 +7,7 @@ import com.nikonenko.util.LocatorsUtil;
 import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Flaky;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,6 +79,7 @@ public class NavigationTests {
     class SocialNetworksActions {
         @Test
         @DisplayName("Check that Twitter button redirects to Twitter page in a new window")
+        @Flaky
         public void checkTwitterButtonRedirectsToTwitterPageInNewWindow() {
             navigationPage.clickOnTwitterButton();
 

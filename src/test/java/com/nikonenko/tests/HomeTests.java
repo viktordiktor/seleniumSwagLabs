@@ -6,6 +6,7 @@ import com.nikonenko.util.SortUtils;
 import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -69,16 +70,26 @@ public class HomeTests {
 
     @Nested
     class CartActions {
+        @Step("Check that all 'Add to cart' buttons available")
+        public void checkThatAllAddToCartButtonsAvailable() {
+            Assertions.assertTrue(homePage.getRemoveFromCartButtons().isEmpty());
+            Assertions.assertEquals(6, homePage.getAddToCartButtons().size());
+        }
+
+        @Step("Check that all 'Remove from cart' buttons available")
+        public void checkThatAllRemoveFromCartButtonsAvailable() {
+            Assertions.assertTrue(homePage.getAddToCartButtons().isEmpty());
+            Assertions.assertEquals(6, homePage.getRemoveFromCartButtons().size());
+        }
+
         @Test
         @DisplayName("Check 'Add to Cart' button changes to 'Remove' button")
         public void checkAddToCartButtonChangesToRemoveButton() {
-            Assertions.assertTrue(homePage.getRemoveFromCartButtons().isEmpty());
-            Assertions.assertEquals(6, homePage.getAddToCartButtons().size());
+            checkThatAllAddToCartButtonsAvailable();
 
             homePage.addAllItemsToCart();
 
-            Assertions.assertTrue(homePage.getAddToCartButtons().isEmpty());
-            Assertions.assertEquals(6, homePage.getRemoveFromCartButtons().size());
+            checkThatAllRemoveFromCartButtonsAvailable();
         }
 
         @Test
@@ -87,8 +98,7 @@ public class HomeTests {
             homePage.addAllItemsToCart();
             homePage.removeAllItemsFromCart();
 
-            Assertions.assertTrue(homePage.getRemoveFromCartButtons().isEmpty());
-            Assertions.assertEquals(6, homePage.getAddToCartButtons().size());
+            checkThatAllAddToCartButtonsAvailable();
         }
 
         @Test
