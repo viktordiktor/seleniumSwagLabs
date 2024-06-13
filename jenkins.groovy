@@ -3,7 +3,6 @@ pipeline {
     tools {
         maven 'maven-jenkins'
     }
-    triggers { pollSCM('* * * * *') }
     stages {
         stage("clone repo") {
             steps {
