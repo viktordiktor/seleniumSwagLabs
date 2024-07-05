@@ -1,6 +1,7 @@
 package com.nikonenko.pages;
 
 import com.nikonenko.util.LocatorsUtil;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,5 +62,9 @@ public class NavigationPage {
 
     public boolean checkIfModalActive() {
         return driver.findElement(By.xpath(LocatorsUtil.MODAL_XPATH)).isDisplayed();
+    }
+
+    public void assertRedirectToPage(String url) {
+        Assertions.assertEquals(url, getUrl());
     }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class TestUtil {
     public static ChromeDriver getConfigureChromeDriver() {
         ChromeOptions opt = new ChromeOptions();
-        opt.addArguments("--headless");
+//        opt.addArguments("--headless");
         opt.addArguments("--no-sandbox");
         opt.addArguments("--disable-dev-shm-usage");
         return new ChromeDriver(opt);
