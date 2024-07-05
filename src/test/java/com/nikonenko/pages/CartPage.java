@@ -1,6 +1,7 @@
 package com.nikonenko.pages;
 
 import com.nikonenko.util.LocatorsUtil;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,11 @@ public class CartPage extends NavigationPage {
         return new HomePage(driver);
     }
 
+    public CheckoutPage clickOnCheckoutButton() {
+        driver.findElement(By.cssSelector("#checkout")).click();
+        return new CheckoutPage(driver);
+    }
+
     public int getCartItemsAmount() {
         return driver.findElements(By.xpath("//div[@class='cart_item']")).size();
     }
@@ -30,5 +36,17 @@ public class CartPage extends NavigationPage {
 
     public void removeAllItemsFromCart() {
         getRemoveFromCartButtons().forEach(WebElement::click);
+    }
+
+    private boolean isCartContainsRightAmountOfItems(int amount) {
+        return amount == getCartItemsAmount();
+    }
+
+    public void assertThatCartContainsAllItems() {
+        Assertions.assertTrue(isCartContainsRightAmountOfItems(6));
+    }
+
+    public void assertThatCartIsEmpty() {
+        Assertions.assertTrue(isCartContainsRightAmountOfItems(0));
     }
 }

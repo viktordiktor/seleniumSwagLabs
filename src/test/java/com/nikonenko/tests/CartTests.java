@@ -7,7 +7,6 @@ import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -23,16 +22,16 @@ public class CartTests {
         driver = TestUtil.getConfigureChromeDriver();
         WebDriverManager.chromedriver().setup();
 
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = loginPage.goToHomePage();
-        cartPage = homePage.clickOnCartButton();
+        cartPage = new LoginPage(driver)
+                .goToHomePage()
+                .clickOnCartButton();
     }
 
     @Test
     @DisplayName("Check that 'Continue Shopping' button redirect to Inventory Page")
     public void checkThatContinueShoppingButtonRedirectToInventoryPage() {
         HomePage homePage = cartPage.clickOnContinueShoppingButton();
-        Assertions.assertEquals(UrlUtil.INVENTORY_PAGE, homePage.getUrl());
+        homePage.assertRedirectToPage(UrlUtil.INVENTORY_PAGE);
     }
 
     @Nested
@@ -41,7 +40,8 @@ public class CartTests {
         @DisplayName("Check that Cart contains all added Items")
         public void checkThatCartContainsAllAddedItems() {
             addAllItemsToCartFromHomePage();
-            Assertions.assertEquals(6, cartPage.getCartItemsAmount());
+
+            cartPage.assertThatCartContainsAllItems();
         }
 
         @Test
@@ -50,7 +50,8 @@ public class CartTests {
             addAllItemsToCartFromHomePage();
 
             cartPage.removeAllItemsFromCart();
-            Assertions.assertEquals(0, cartPage.getCartItemsAmount());
+
+            cartPage.assertThatCartIsEmpty();
         }
 
         private void addAllItemsToCartFromHomePage() {

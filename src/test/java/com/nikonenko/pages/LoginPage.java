@@ -3,6 +3,7 @@ package com.nikonenko.pages;
 import com.nikonenko.util.DataUtil;
 import com.nikonenko.util.UrlUtil;
 import com.nikonenko.util.LocatorsUtil;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -49,7 +50,7 @@ public class LoginPage {
         return driver.manage().getCookies()
                 .stream()
                 .anyMatch(cookie ->
-                        cookie.getName().equals("session-username")
+                        cookie.getName().equals(DataUtil.SESSION_USERNAME_KEY)
                             && cookie.getValue().equals(username));
     }
 
@@ -57,6 +58,22 @@ public class LoginPage {
         return driver.manage().getCookies()
                 .stream()
                 .anyMatch(cookie ->
-                        cookie.getName().equals("session-username"));
+                        cookie.getName().equals(DataUtil.SESSION_USERNAME_KEY));
+    }
+
+    public void assertRedirectToHomePage() {
+        Assertions.assertEquals(UrlUtil.INVENTORY_PAGE, driver.getCurrentUrl());
+    }
+
+    public void assertThatCookiesContainsUsername(String username) {
+        Assertions.assertTrue(isSessionUsernameCookiesCorrect(username));
+    }
+
+    public void assertThatCredentialsAreNotValid() {
+        Assertions.assertFalse(isCredentialsValid());
+    }
+
+    public void assertThatSessionUsernameCookiesAreNotExists() {
+        Assertions.assertFalse(isSessionUsernameExists());
     }
 }
