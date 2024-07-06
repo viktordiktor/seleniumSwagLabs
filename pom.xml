@@ -16,8 +16,8 @@
     <junit.version>4.13.2</junit.version>
     <allure.version>2.27.0</allure.version>
     <junit-jupiter.version>5.9.1</junit-jupiter.version>
-    <selenium.version>4.21.0</selenium.version>
-    <webdrivermanager.version>5.8.0</webdrivermanager.version>
+    <selenium.version>4.22.0</selenium.version>
+    <webdrivermanager.version>5.9.1</webdrivermanager.version>
     <slf4j.version>2.0.13</slf4j.version>
     <lombok.version>1.18.32</lombok.version>
     <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
