@@ -44,7 +44,7 @@ public class NavigationTests {
         }
 
         @Test
-        @DisplayName("Check that About button redirect to About page")
+        @DisplayName("Check that About button redirect to About Page")
         public void checkAboutButtonRedirectToAboutPage() {
             navigationPage.clickOnAboutButton();
             navigationPage.assertRedirectToPage(UrlUtil.ABOUT_URL);
@@ -59,7 +59,7 @@ public class NavigationTests {
         }
 
         @Test
-        @DisplayName("Check that All Items button redirect to Inventory page")
+        @DisplayName("Check that All Items button redirect to Inventory Page")
         public void checkAllItemsButtonRedirectToInventoryPage() {
             navigationPage.clickOnAllItemsButton();
             navigationPage.assertRedirectToPage(UrlUtil.INVENTORY_PAGE);
