@@ -2,13 +2,11 @@ package com.nikonenko.tests;
 
 import com.nikonenko.pages.HomePage;
 import com.nikonenko.pages.LoginPage;
-import com.nikonenko.util.SortUtils;
 import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -36,28 +34,28 @@ public class HomeTests {
         @DisplayName("Check that sortNameAsc working correctly")
         public void checkThatSortNameAscWorkingCorrectly() {
             homePage.sortByNameAsc();
-            Assertions.assertTrue(SortUtils.checkCorrectNameAsc(homePage.getItemNames()));
+            homePage.assertAscNameSort();
         }
 
         @Test
         @DisplayName("Check that sortNameDesc working correctly")
         public void checkThatSortNameDescWorkingCorrectly() {
             homePage.sortByNameDesc();
-            Assertions.assertTrue(SortUtils.checkCorrectNameDesc(homePage.getItemNames()));
+            homePage.assertDescNameSort();
         }
 
         @Test
         @DisplayName("Check that sortPriceAsc working correctly")
         public void checkThatSortPriceAscWorkingCorrectly() {
             homePage.sortByPriceAsc();
-            Assertions.assertTrue(SortUtils.checkCorrectPriceAsc(homePage.getItemPrices()));
+            homePage.assertAscPriceSort();
         }
 
         @Test
         @DisplayName("Check that sortPriceDesc working correctly")
         public void checkThatSortPriceDescWorkingCorrectly() {
             homePage.sortByPriceDesc();
-            Assertions.assertTrue(SortUtils.checkCorrectPriceDesc(homePage.getItemPrices()));
+            homePage.assertDescPriceSort();
         }
     }
 
@@ -65,21 +63,20 @@ public class HomeTests {
     @DisplayName("Check that img href redirects to correct Item page")
     @ValueSource(ints = {0, 1, 2, 3, 4, 5})
     public void checkThatImgHrefRedirectsToCorrectItemPage(int id) {
-        Assertions.assertEquals(String.format(UrlUtil.ITEM_URL, id), homePage.getItemByImgHref(id).getUrl());
+        homePage.getItemByImgHref(id);
+        homePage.assertRedirectToPage(String.format(UrlUtil.ITEM_URL, id));
     }
 
     @Nested
     class CartActions {
         @Step("Check that all 'Add to cart' buttons available")
         public void checkThatAllAddToCartButtonsAvailable() {
-            Assertions.assertTrue(homePage.getRemoveFromCartButtons().isEmpty());
-            Assertions.assertEquals(6, homePage.getAddToCartButtons().size());
+            homePage.assertAddToCartButtonsAvailable();
         }
 
         @Step("Check that all 'Remove from cart' buttons available")
         public void checkThatAllRemoveFromCartButtonsAvailable() {
-            Assertions.assertTrue(homePage.getAddToCartButtons().isEmpty());
-            Assertions.assertEquals(6, homePage.getRemoveFromCartButtons().size());
+            homePage.assertRemoveFromCartButtonsNotAvailable();
         }
 
         @Test
@@ -101,16 +98,26 @@ public class HomeTests {
             checkThatAllAddToCartButtonsAvailable();
         }
 
+        @Step("Add all Items to Cart and check that Count Widget contains all Items")
+        private void addAllItemsToCartAndCheckThatCountWidgetContainsAllItems() {
+            homePage.addAllItemsToCart();
+            homePage.assertThatCountWidgetContainsAllItems();
+        }
+
+        @Step("Remove all Items from Cart and check that Count Widget contains no Items")
+        private void removeAllItemsFromCartAndCheckThatCountWidgetContainsNoItems() {
+            homePage.removeAllItemsFromCart();
+            homePage.assertThatCartHasNotCountWidget();
+        }
+
         @Test
         @DisplayName("Check Cart count widget")
         public void checkCartCountWidget() {
-            Assertions.assertFalse(homePage.isCartHasCountWidget());
+            homePage.assertThatCartHasNotCountWidget();
 
-            homePage.addAllItemsToCart();
-            Assertions.assertEquals(6, homePage.getCountWidgetValue());
+            addAllItemsToCartAndCheckThatCountWidgetContainsAllItems();
 
-            homePage.removeAllItemsFromCart();
-            Assertions.assertFalse(homePage.isCartHasCountWidget());
+            removeAllItemsFromCartAndCheckThatCountWidgetContainsNoItems();
         }
     }
 

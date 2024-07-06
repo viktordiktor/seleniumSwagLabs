@@ -2,6 +2,8 @@ package com.nikonenko.pages;
 
 import com.nikonenko.util.DataUtil;
 import com.nikonenko.util.LocatorsUtil;
+import com.nikonenko.util.SortUtils;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -61,17 +63,63 @@ public class HomePage extends NavigationPage {
         getRemoveFromCartButtons().forEach(WebElement::click);
     }
 
-    public boolean isCartHasCountWidget() {
+    private boolean isCartHasCountWidget() {
         return driver.findElements(By.xpath(LocatorsUtil.CART_LINK_CHILD_XPATH)).size() > 0;
     }
 
-    public int getCountWidgetValue() {
+    public void assertThatCartHasCountWidget() {
+        Assertions.assertTrue(isCartHasCountWidget());
+    }
+
+    public void assertThatCartHasNotCountWidget() {
+        Assertions.assertFalse(isCartHasCountWidget());
+    }
+
+    private int getCountWidgetValue() {
         WebElement countWidget = driver.findElement(By.xpath(LocatorsUtil.CART_WIDGET_XPATH));
         return Integer.parseInt(countWidget.getText());
+    }
+
+    public void assertThatCountWidgetContainsAllItems() {
+        Assertions.assertEquals(6, getCountWidgetValue());
     }
 
     public ItemPage getItemByImgHref(int id) {
         driver.findElement(By.id(String.format(LocatorsUtil.ITEM_IMAGE_HREF_ID, id))).click();
         return new ItemPage(driver);
+    }
+
+    public void assertAscNameSort() {
+        Assertions.assertTrue(SortUtils.checkCorrectNameAsc(getItemNames()));
+    }
+
+    public void assertDescNameSort() {
+        Assertions.assertTrue(SortUtils.checkCorrectNameDesc(getItemNames()));
+    }
+
+    public void assertAscPriceSort() {
+        Assertions.assertTrue(SortUtils.checkCorrectPriceAsc(getItemPrices()));
+    }
+
+    public void assertDescPriceSort() {
+        Assertions.assertTrue(SortUtils.checkCorrectPriceDesc(getItemPrices()));
+    }
+
+    private void assertThatListContainsAvailableButtons(List<WebElement> elementList) {
+        Assertions.assertEquals(6, elementList.size());
+        for (WebElement element : elementList) {
+            Assertions.assertTrue(element.isDisplayed());
+            Assertions.assertTrue(element.isEnabled());
+        }
+    }
+
+    public void assertAddToCartButtonsAvailable() {
+        Assertions.assertTrue(getRemoveFromCartButtons().isEmpty());
+        assertThatListContainsAvailableButtons(getAddToCartButtons());
+    }
+
+    public void assertRemoveFromCartButtonsNotAvailable() {
+        Assertions.assertTrue(getAddToCartButtons().isEmpty());
+        assertThatListContainsAvailableButtons(getRemoveFromCartButtons());
     }
 }

@@ -6,6 +6,7 @@ import com.nikonenko.pages.LoginPage;
 import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -54,6 +55,7 @@ public class CartTests {
             cartPage.assertThatCartIsEmpty();
         }
 
+        @Step("Add all Items to Cart from Home Page")
         private void addAllItemsToCartFromHomePage() {
             HomePage homePage = cartPage.clickOnContinueShoppingButton();
             homePage.addAllItemsToCart();
