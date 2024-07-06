@@ -14,7 +14,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withMaven {
-                        sh "mvn clean test"
+                        sh "mvn clean install test"
                     }
                 }
             }
