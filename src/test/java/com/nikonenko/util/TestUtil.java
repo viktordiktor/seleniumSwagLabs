@@ -10,6 +10,8 @@ public class TestUtil {
         ChromeOptions opt = new ChromeOptions();
         opt.addArguments("--headless");
         opt.addArguments("--no-sandbox");
+        opt.addArguments("--test-type");
+        opt.addArguments("--remote-allow-origins=*");
         opt.addArguments("--disable-dev-shm-usage");
         return new ChromeDriver(opt);
     }
