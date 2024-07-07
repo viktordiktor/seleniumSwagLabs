@@ -1,12 +1,15 @@
 package com.nikonenko.drivers;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.WebDriver;
 
 @UtilityClass
+@Log4j
 public class DriverFactory {
     public static WebDriver getConfiguredDriver() {
-        switch (System.getProperty("browser", "CHROME")) {
+        log.info(System.getenv("browser"));
+        switch (System.getenv("browser")) {
             case "CHROME" -> {
                 return new ChromeDriverConfiguration().getConfigureChromeDriver();
             }

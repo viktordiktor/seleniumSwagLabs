@@ -9,7 +9,6 @@ public class DriverConfiguration {
         options.add("--headless");
         options.add("--no-sandbox");
         options.add("--test-type");
-        options.add("--remote-allow-origins=*");
         options.add("--disable-dev-shm-usage");
         return options;
     }

@@ -22,8 +22,7 @@
     <lombok.version>1.18.32</lombok.version>
     <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
     <allure-maven.version>2.12.0</allure-maven.version>
-    <!--suppress UnresolvedMavenProperty -->
-    <browser>${BROWSER}</browser>
+    <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
   </properties>
 
   <dependencies>
@@ -96,7 +95,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>${maven-compiler-plugin.version}</version>
         <configuration>
           <source>17</source>
           <target>17</target>

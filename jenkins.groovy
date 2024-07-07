@@ -16,7 +16,9 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withMaven {
-                        sh "mvn clean install test -DBROWSER=${BROWSER}"
+                        withEnv(["BROWSER=${params.BROWSER}"]) {
+                            sh "mvn clean test"
+                        }
                     }
                 }
             }
