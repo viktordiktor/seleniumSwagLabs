@@ -3,7 +3,9 @@ pipeline {
     tools {
         maven 'maven-jenkins'
     }
-
+    parameters {
+        string(name: 'BROWSER', defaultValue: 'CHROME', description: 'Browser to use for testing')
+    }
     stages {
         stage("clone repo") {
             steps {
@@ -14,7 +16,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withMaven {
-                        sh "mvn clean install test"
+                        sh "mvn clean install test -DBROWSER=${BROWSER}"
                     }
                 }
             }

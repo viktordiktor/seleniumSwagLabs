@@ -1,10 +1,9 @@
 package com.nikonenko.tests;
 
+import com.nikonenko.drivers.DriverFactory;
 import com.nikonenko.pages.LoginPage;
 import com.nikonenko.pages.NavigationPage;
-import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
@@ -20,8 +19,7 @@ public class NavigationTests {
 
     @BeforeEach
     public void setup() {
-        driver = TestUtil.getConfigureChromeDriver();
-        WebDriverManager.chromedriver().setup();
+        driver = DriverFactory.getConfiguredDriver();
 
         LoginPage loginPage = new LoginPage(driver);
         navigationPage = loginPage.goToHomePage();
@@ -102,6 +100,7 @@ public class NavigationTests {
     @Test
     @DisplayName("Check that Cart button redirects to Cart")
     public void checkThatCartButtonRedirectsToCart() {
+        navigationPage.clickOnCartButton();
         navigationPage.assertRedirectToPage(UrlUtil.CART_PAGE);
     }
 

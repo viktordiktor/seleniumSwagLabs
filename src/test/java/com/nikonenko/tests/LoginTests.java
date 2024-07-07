@@ -1,9 +1,8 @@
 package com.nikonenko.tests;
 
+import com.nikonenko.drivers.DriverFactory;
 import com.nikonenko.pages.LoginPage;
 import com.nikonenko.util.DataUtil;
-import com.nikonenko.util.TestUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,8 +17,7 @@ public class LoginTests {
 
     @BeforeEach
     public void setup() {
-        driver = TestUtil.getConfigureChromeDriver();
-        WebDriverManager.chromedriver().setup();
+        driver = DriverFactory.getConfiguredDriver();
 
         loginPage = new LoginPage(driver);
     }

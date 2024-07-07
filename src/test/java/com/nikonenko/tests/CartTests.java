@@ -1,11 +1,10 @@
 package com.nikonenko.tests;
 
+import com.nikonenko.drivers.DriverFactory;
 import com.nikonenko.pages.CartPage;
 import com.nikonenko.pages.HomePage;
 import com.nikonenko.pages.LoginPage;
-import com.nikonenko.util.TestUtil;
 import com.nikonenko.util.UrlUtil;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,8 +19,7 @@ public class CartTests {
 
     @BeforeEach
     public void setup() {
-        driver = TestUtil.getConfigureChromeDriver();
-        WebDriverManager.chromedriver().setup();
+        driver = DriverFactory.getConfiguredDriver();
 
         cartPage = new LoginPage(driver)
                 .goToHomePage()
