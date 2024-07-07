@@ -8,8 +8,8 @@ import org.openqa.selenium.WebDriver;
 @Log4j
 public class DriverFactory {
     public static WebDriver getConfiguredDriver() {
-        log.info(System.getenv("browser"));
-        switch (System.getenv("browser")) {
+        log.info(System.getenv("BROWSER"));
+        switch (System.getenv("BROWSER")) {
             case "CHROME" -> {
                 return new ChromeDriverConfiguration().getConfigureChromeDriver();
             }
@@ -20,6 +20,6 @@ public class DriverFactory {
                 return new EdgeDriverConfiguration().getConfigureEdgeDriver();
             }
         }
-        throw new RuntimeException("Unsupported browser: " + System.getProperty("browser"));
+        throw new RuntimeException("Unsupported browser: " + System.getenv("BROWSER"));
     }
 }
