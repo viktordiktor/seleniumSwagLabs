@@ -6,6 +6,7 @@ import com.nikanenka.pages.LoginPage;
 import com.nikanenka.util.UrlUtil;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -63,6 +64,12 @@ public class HomeTests {
     public void checkThatImgHrefRedirectsToCorrectItemPage(int id) {
         homePage.getItemByImgHref(id);
         homePage.assertRedirectToPage(String.format(UrlUtil.ITEM_URL, id));
+    }
+
+    @Test
+    @DisplayName("Just test that always fails")
+    public void justTestThatAlwaysFails() {
+        Assertions.assertEquals(5, 2 + 2);
     }
 
     @Nested
