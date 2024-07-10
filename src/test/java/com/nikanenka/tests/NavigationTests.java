@@ -1,9 +1,9 @@
-package com.nikonenko.tests;
+package com.nikanenka.tests;
 
-import com.nikonenko.drivers.DriverFactory;
-import com.nikonenko.pages.LoginPage;
-import com.nikonenko.pages.NavigationPage;
-import com.nikonenko.util.UrlUtil;
+import com.nikanenka.drivers.DriverFactory;
+import com.nikanenka.pages.LoginPage;
+import com.nikanenka.pages.NavigationPage;
+import com.nikanenka.util.UrlUtil;
 import io.qameta.allure.Flaky;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;

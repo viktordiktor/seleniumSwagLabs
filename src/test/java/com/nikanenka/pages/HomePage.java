@@ -1,8 +1,8 @@
-package com.nikonenko.pages;
+package com.nikanenka.pages;
 
-import com.nikonenko.util.DataUtil;
-import com.nikonenko.util.LocatorsUtil;
-import com.nikonenko.util.SortUtils;
+import com.nikanenka.util.DataUtil;
+import com.nikanenka.util.LocatorsUtil;
+import com.nikanenka.util.SortUtils;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

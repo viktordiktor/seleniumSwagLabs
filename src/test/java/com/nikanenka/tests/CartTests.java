@@ -1,10 +1,10 @@
-package com.nikonenko.tests;
+package com.nikanenka.tests;
 
-import com.nikonenko.drivers.DriverFactory;
-import com.nikonenko.pages.CartPage;
-import com.nikonenko.pages.HomePage;
-import com.nikonenko.pages.LoginPage;
-import com.nikonenko.util.UrlUtil;
+import com.nikanenka.drivers.DriverFactory;
+import com.nikanenka.pages.CartPage;
+import com.nikanenka.pages.HomePage;
+import com.nikanenka.pages.LoginPage;
+import com.nikanenka.util.UrlUtil;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

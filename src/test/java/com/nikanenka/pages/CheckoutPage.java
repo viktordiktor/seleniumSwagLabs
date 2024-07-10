@@ -1,4 +1,4 @@
-package com.nikonenko.pages;
+package com.nikanenka.pages;
 
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;

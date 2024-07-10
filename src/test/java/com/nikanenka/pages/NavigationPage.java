@@ -1,7 +1,7 @@
-package com.nikonenko.pages;
+package com.nikanenka.pages;
 
-import com.nikonenko.util.FailUtil;
-import com.nikonenko.util.LocatorsUtil;
+import com.nikanenka.util.FailUtil;
+import com.nikanenka.util.LocatorsUtil;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

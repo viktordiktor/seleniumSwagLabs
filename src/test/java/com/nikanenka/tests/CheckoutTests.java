@@ -1,8 +1,8 @@
-package com.nikonenko.tests;
+package com.nikanenka.tests;
 
-import com.nikonenko.drivers.DriverFactory;
-import com.nikonenko.pages.CheckoutPage;
-import com.nikonenko.pages.LoginPage;
+import com.nikanenka.drivers.DriverFactory;
+import com.nikanenka.pages.CheckoutPage;
+import com.nikanenka.pages.LoginPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

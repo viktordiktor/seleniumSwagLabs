@@ -1,4 +1,4 @@
-package com.nikonenko.drivers;
+package com.nikanenka.drivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;

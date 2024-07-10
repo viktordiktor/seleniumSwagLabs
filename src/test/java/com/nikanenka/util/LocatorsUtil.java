@@ -1,4 +1,4 @@
-package com.nikonenko.util;
+package com.nikanenka.util;
 
 import lombok.experimental.UtilityClass;
 

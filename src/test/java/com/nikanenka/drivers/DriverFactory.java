@@ -1,7 +1,7 @@
-package com.nikonenko.drivers;
+package com.nikanenka.drivers;
 
-import com.nikonenko.util.DriverUtil;
-import com.nikonenko.util.LogUtil;
+import com.nikanenka.util.DriverUtil;
+import com.nikanenka.util.LogUtil;
 import lombok.experimental.UtilityClass;
 import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.WebDriver;

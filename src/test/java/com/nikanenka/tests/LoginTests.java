@@ -1,8 +1,8 @@
-package com.nikonenko.tests;
+package com.nikanenka.tests;
 
-import com.nikonenko.drivers.DriverFactory;
-import com.nikonenko.pages.LoginPage;
-import com.nikonenko.util.DataUtil;
+import com.nikanenka.drivers.DriverFactory;
+import com.nikanenka.pages.LoginPage;
+import com.nikanenka.util.DataUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
