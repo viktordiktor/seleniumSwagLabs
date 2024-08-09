@@ -4,7 +4,7 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class UrlUtil {
-    public static final String ROOT_URL = "https://www.saucedemo.com/";
+    public static final String ROOT_URL = "https://dockertest2.lingoport.io/command-center/";
     public static final String ABOUT_URL = "https://saucelabs.com/";
     public static final String INVENTORY_PAGE = "https://www.saucedemo.com/inventory.html";
     public static final String CART_PAGE = "https://www.saucedemo.com/cart.html";
